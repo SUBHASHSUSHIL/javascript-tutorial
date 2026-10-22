@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DOM — Style Properties</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+    }
+
+    p {
+      margin: 6px 0;
+      padding: 10px;
+      border-radius: 4px;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <p id="p1">Paragraph 1 — navy bg, white text, justify</p>
+  <p id="p2">Paragraph 2 — yellow bg, navy text, center</p>
+  <p id="p3">Paragraph 3 — red bg, navy text, right-aligned</p>
+  <p id="p4">Paragraph 4 — brown bg, white text, floated left</p>
+  <p id="p5">Paragraph 5 — magenta bg, white text, justify</p>
+  <p id="p6">Paragraph 6 — purple bg, yellow text</p>
+  <p id="p7">Paragraph 7 — blue bg, white text, solid border</p>
+  <p id="p8">Paragraph 8 — pink bg, large font</p>
+  <p id="p9">Paragraph 9 — orange bg, red text, justify</p>
+  <p id="p10">Paragraph 10 — navy bg, white text, padded</p>
+
+  <script>
+    /**
+     * Applies a plain object of CSS properties to a DOM element.
+     * @param {string} id  - The element ID.
+     * @param {Object} styles - CSS property/value pairs (camelCase keys).
+     */
+    function applyStyles(id, styles) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      Object.assign(el.style, styles);
+    }
+
+    applyStyles('p1',  { backgroundColor: 'navy',    color: 'white',  textAlign: 'justify', padding: '20px' });
+    applyStyles('p2',  { backgroundColor: 'yellow',  color: 'navy',   textAlign: 'center',  padding: '30px' });
+    applyStyles('p3',  { backgroundColor: 'red',     color: 'navy',   textAlign: 'right',   padding: '40px' });
+    applyStyles('p4',  { backgroundColor: 'brown',   color: 'white',  float: 'left',        padding: '5px'  });
+    applyStyles('p5',  { backgroundColor: 'magenta', color: 'white',  textAlign: 'justify', padding: '0px'  });
+    applyStyles('p6',  { backgroundColor: 'purple',  color: 'yellow', padding: '30px' });
+    applyStyles('p7',  { backgroundColor: 'blue',    color: 'white',  border: '5px solid white' });
+    applyStyles('p8',  { backgroundColor: 'pink',    color: 'white',  fontSize: '25px' });
+    applyStyles('p9',  { backgroundColor: 'orange',  color: 'red',    textAlign: 'justify' });
+    applyStyles('p10', { backgroundColor: 'navy',    color: 'white',  padding: '20px' });
+  </script>
+
+</body>
+</html>

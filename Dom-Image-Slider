@@ -1,85 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <style>
-        * {
-            margin: 0;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DOM — Image Slider</title>
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+  />
+  <style>
+    * { margin: 0; box-sizing: border-box; }
 
-        .main {
-            width: 100vw;
-            height: 100vh;
-            display: grid;
-            place-items: center;
-        }
+    body {
+      font-family: sans-serif;
+      width: 100vw;
+      height: 100vh;
+      display: grid;
+      place-items: center;
+      background: #111;
+    }
 
-        .center {
-            width: 70%;
-            height: 65%;
-            position: relative;
-        }
+    .slider {
+      position: relative;
+      width: 70%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      border-radius: 8px;
+    }
 
-        .center img {
-            width: 100%;
-            height: 100%;
-        }
+    .slider__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
 
-        .btn {
-            position: absolute;
-            top: 45%;
-            background: none;
-            border: none;
-            color: white;
-            cursor: pointer;
-        }
+    .slider__btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.45);
+      border: none;
+      color: white;
+      cursor: pointer;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
 
-        #btn1 {
-            left: 10px;
-        }
+    .slider__btn:hover { background: rgba(0, 0, 0, 0.75); }
 
-        #btn2 {
-            right: 10px;
-        }
-    </style>
+    #btn1 { left: 12px; }
+    #btn2 { right: 12px; }
+
+    .slider__dots {
+      position: absolute;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.5);
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .dot--active { background: white; }
+  </style>
 </head>
-
 <body>
-    <div class="main">
-        <div class="center">
-            <img src="./Images/nature.jpg" alt="">
-            <button class="btn" id="btn1" onclick="previous()"><span class="material-symbols-outlined">
-                    arrow_back_ios
-                </span></button>
-            <button class="btn" id="btn2" onclick="next()"><span class="material-symbols-outlined">
-                    arrow_forward_ios
-                </span></button>
-        </div>
-    </div>
-    <script>
-        var Images = ["./Images/nature.jpg,./Images/nature1.jpg", "./Images/nature2.jpg"]
-        var img = document.getElementById("img")
-        var index = 0
-        function previous() {
-            if (index == 0)
-                index = Images.length - 1
-            else
-                index--
 
-            img.src = Images[index]
-        }
-        function next() {
-            if (index == 0)
-                index = Images.length + 1
-            else
-                index++
-        }
-    </script>
+  <div class="slider" id="slider">
+    <img class="slider__img" id="sliderImg" src="./Images/nature.jpg" alt="Slide 1" />
+
+    <button class="slider__btn" id="btn1" aria-label="Previous image">
+      <span class="material-symbols-outlined">arrow_back_ios</span>
+    </button>
+    <button class="slider__btn" id="btn2" aria-label="Next image">
+      <span class="material-symbols-outlined">arrow_forward_ios</span>
+    </button>
+
+    <div class="slider__dots" id="dotContainer"></div>
+  </div>
+
+  <script>
+    /**
+     * Slide definitions — update src paths to match your actual assets.
+     * @type {Array<{src: string, alt: string}>}
+     */
+    const SLIDES = [
+      { src: './Images/nature.jpg',  alt: 'Nature scene 1' },
+      { src: './Images/nature1.jpg', alt: 'Nature scene 2' },
+      { src: './Images/nature2.jpg', alt: 'Nature scene 3' },
+    ];
+
+    const sliderImg    = document.getElementById('sliderImg');
+    const btn1         = document.getElementById('btn1');
+    const btn2         = document.getElementById('btn2');
+    const dotContainer = document.getElementById('dotContainer');
+    const slider       = document.getElementById('slider');
+
+    let currentIndex = 0;
+
+    // Build dot indicators
+    SLIDES.forEach((_, i) => {
+      const dot = document.createElement('span');
+      dot.className = `dot${i === 0 ? ' dot--active' : ''}`;
+      dot.addEventListener('click', () => goTo(i));
+      dotContainer.appendChild(dot);
+    });
+
+    /** Navigates to a slide by index (wraps around). */
+    function goTo(index) {
+      currentIndex = (index + SLIDES.length) % SLIDES.length;
+      sliderImg.src = SLIDES[currentIndex].src;
+      sliderImg.alt = SLIDES[currentIndex].alt;
+
+      dotContainer.querySelectorAll('.dot').forEach((dot, i) => {
+        dot.classList.toggle('dot--active', i === currentIndex);
+      });
+    }
+
+    btn1.addEventListener('click', () => goTo(currentIndex - 1));
+    btn2.addEventListener('click', () => goTo(currentIndex + 1));
+
+    // Auto-advance every 4 seconds; pause on hover
+    let autoTimer = setInterval(() => goTo(currentIndex + 1), 4000);
+    slider.addEventListener('mouseenter', () => clearInterval(autoTimer));
+    slider.addEventListener('mouseleave', () => {
+      autoTimer = setInterval(() => goTo(currentIndex + 1), 4000);
+    });
+  </script>
+
 </body>
-
 </html>

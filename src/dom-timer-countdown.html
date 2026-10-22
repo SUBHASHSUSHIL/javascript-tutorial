@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DOM — Countdown Timer</title>
+  <style>
+    * { margin: 0; box-sizing: border-box; }
+
+    body {
+      font-family: sans-serif;
+      width: 100vw;
+      height: 100vh;
+      display: grid;
+      place-items: center;
+      background: #0a0a1a;
+    }
+
+    .countdown {
+      text-align: center;
+    }
+
+    .countdown__title {
+      color: white;
+      font-size: 1.4rem;
+      background-color: green;
+      padding: 12px 20px;
+      border-radius: 6px;
+      margin-bottom: 8px;
+    }
+
+    .countdown__units {
+      display: flex;
+      gap: 8px;
+    }
+
+    .unit {
+      width: 90px;
+    }
+
+    .unit__value {
+      background-color: #111;
+      color: white;
+      font-size: 2rem;
+      font-weight: bold;
+      padding: 14px;
+      border-radius: 6px 6px 0 0;
+      text-align: center;
+    }
+
+    .unit__label {
+      background-color: navy;
+      color: white;
+      font-size: 0.8rem;
+      text-align: center;
+      padding: 6px;
+      border-radius: 0 0 6px 6px;
+    }
+
+    .countdown__message {
+      color: #90ee90;
+      font-size: 2rem;
+      font-weight: bold;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="countdown">
+    <h2 class="countdown__title" id="countdownTitle">Time until New Year 2028</h2>
+    <div class="countdown__units" id="countdownUnits">
+      <div class="unit">
+        <div class="unit__value" id="unitDays">00</div>
+        <div class="unit__label">Days</div>
+      </div>
+      <div class="unit">
+        <div class="unit__value" id="unitHours">00</div>
+        <div class="unit__label">Hours</div>
+      </div>
+      <div class="unit">
+        <div class="unit__value" id="unitMinutes">00</div>
+        <div class="unit__label">Minutes</div>
+      </div>
+      <div class="unit">
+        <div class="unit__value" id="unitSeconds">00</div>
+        <div class="unit__label">Seconds</div>
+      </div>
+    </div>
+    <p class="countdown__message" id="countdownMessage">🎉 Happy New Year 2028! 🎉</p>
+  </div>
+
+  <script>
+    // ── Configuration ─────────────────────────────────────────────────
+    const TARGET_DATE    = new Date(2028, 0, 1);   // 1 Jan 2028 00:00:00 local time
+    const CELEBRATE_TEXT = '🎉 Happy New Year 2028! 🎉';
+
+    // ── DOM references ────────────────────────────────────────────────
+    const unitDays      = document.getElementById('unitDays');
+    const unitHours     = document.getElementById('unitHours');
+    const unitMinutes   = document.getElementById('unitMinutes');
+    const unitSeconds   = document.getElementById('unitSeconds');
+    const unitsWrapper  = document.getElementById('countdownUnits');
+    const messageEl     = document.getElementById('countdownMessage');
+
+    /**
+     * Zero-pads a number to at least 2 digits.
+     * @param {number} n
+     * @returns {string}
+     */
+    const pad = (n) => String(n).padStart(2, '0');
+
+    /** Updates the countdown display once per tick. */
+    function tick() {
+      const diff = TARGET_DATE - Date.now();
+
+      if (diff <= 0) {
+        clearInterval(timerId);
+        unitsWrapper.style.display = 'none';
+        messageEl.style.display    = 'block';
+        messageEl.textContent      = CELEBRATE_TEXT;
+        return;
+      }
+
+      const totalSeconds = Math.floor(diff / 1000);
+      const days    = Math.floor(totalSeconds / (60 * 60 * 24));
+      const hours   = Math.floor((totalSeconds % (60 * 60 * 24)) / (60 * 60));
+      const minutes = Math.floor((totalSeconds % (60 * 60)) / 60);
+      const seconds = totalSeconds % 60;
+
+      unitDays.textContent    = pad(days);
+      unitHours.textContent   = pad(hours);
+      unitMinutes.textContent = pad(minutes);
+      unitSeconds.textContent = pad(seconds);
+    }
+
+    // Run immediately so there's no 1-second blank, then repeat every second.
+    tick();
+    const timerId = setInterval(tick, 1000);
+  </script>
+
+</body>
+</html>

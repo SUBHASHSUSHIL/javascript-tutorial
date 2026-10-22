@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DOM Selectors</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+      line-height: 1.6;
+    }
+
+    p {
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <p id="p1"  class="group-a">Paragraph 1 — selected by ID (#p1)</p>
+  <p id="p2"  class="group-a">Paragraph 2 — selected by class (.group-a)</p>
+  <p id="p3"  class="group-a">Paragraph 3 — selected by tag (p)</p>
+  <p id="p4"  class="group-a">Paragraph 4 — querySelector ("#p4")</p>
+  <p id="p5"  class="group-a">Paragraph 5 — querySelectorAll (".group-a")</p>
+  <p id="p6"  class="group-b">Paragraph 6 — class group-b</p>
+  <p id="p7"  class="group-b">Paragraph 7 — class group-b</p>
+  <p id="p8"  class="group-b">Paragraph 8 — class group-b</p>
+  <p id="p9"  class="group-b">Paragraph 9 — class group-b</p>
+  <p id="p10" class="group-b">Paragraph 10 — class group-b</p>
+
+  <script>
+    // ── 1. getElementById ──────────────────────────────────────────────
+    const byId = document.getElementById('p1');
+    byId.style.cssText = 'background:navy; color:white; padding:10px; text-align:justify;';
+
+    // ── 2. getElementsByClassName ──────────────────────────────────────
+    const byClass = document.getElementsByClassName('group-b');
+    for (const el of byClass) {
+      el.style.cssText = 'background:#4a0080; color:white; padding:10px;';
+    }
+
+    // ── 3. getElementsByTagName ────────────────────────────────────────
+    // Selects ALL <p> elements — here we just log for demonstration.
+    const byTag = document.getElementsByTagName('p');
+    console.log('getElementsByTagName("p") →', byTag.length, 'elements');
+
+    // ── 4. querySelector (returns first match only) ────────────────────
+    const first = document.querySelector('#p4');
+    first.style.cssText = 'background:darkgreen; color:white; padding:10px;';
+
+    // ── 5. querySelectorAll (returns all matches) ──────────────────────
+    const selected = document.querySelectorAll('#p2, #p5, #p7');
+    for (const el of selected) {
+      el.style.cssText = 'background:maroon; color:white; padding:10px;';
+    }
+  </script>
+
+</body>
+</html>

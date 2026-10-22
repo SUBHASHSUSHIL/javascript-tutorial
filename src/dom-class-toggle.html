@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DOM — Class Toggle (Accordion Menu)</title>
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+  />
+  <style>
+    * { margin: 0; box-sizing: border-box; }
+
+    body { font-family: sans-serif; padding: 20px; }
+
+    .nav {
+      width: 260px;
+    }
+
+    .nav__header {
+      background-color: green;
+      color: white;
+      padding: 12px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      border-radius: 4px 4px 0 0;
+      user-select: none;
+    }
+
+    .nav__header:hover { background-color: #005500; }
+
+    .nav__icon {
+      font-size: 1.4rem;
+    }
+
+    .nav__menu {
+      list-style: none;
+      padding: 0;
+    }
+
+    .nav__menu li {
+      background-color: green;
+      margin-top: 1px;
+    }
+
+    .nav__menu li:last-child { border-radius: 0 0 4px 4px; }
+
+    .nav__menu li:hover { background-color: #005500; }
+
+    .nav__menu a {
+      display: block;
+      padding: 10px 16px;
+      text-decoration: none;
+      color: white;
+    }
+
+    /* Utility class toggled by JS */
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav__header" id="menuToggle" role="button" aria-expanded="false" aria-controls="menuList">
+      <span>Menu</span>
+      <span class="material-symbols-outlined nav__icon" aria-hidden="true">menu</span>
+    </div>
+    <ul class="nav__menu hidden" id="menuList">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Gallery</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">FAQ</a></li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="#">Login</a></li>
+      <li><a href="#">Signup</a></li>
+    </ul>
+  </nav>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const menuList   = document.getElementById('menuList');
+
+    menuToggle.addEventListener('click', () => {
+      const isExpanded = menuList.classList.toggle('hidden') === false;
+      menuToggle.setAttribute('aria-expanded', String(isExpanded));
+    });
+  </script>
+
+</body>
+</html>

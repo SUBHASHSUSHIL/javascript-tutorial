@@ -1,62 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        *{
-            margin: 0;
-        }
-        .main{
-            width: 100vw;
-            height: 100vh;
-            display: grid;
-            place-items: center;
-        }
-        .center{
-            width: 50%;
-            height: 60%;
-        }
-        .center button{
-            background-color: navy;
-            width: 100%;
-            color: white;
-            padding: 10px;
-            border: none;
-        }
-        .center p{
-            background-color: purple;
-            color: white;
-            text-align: justify;
-            padding: 10px;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DOM — Change Element Content</title>
+  <style>
+    * { margin: 0; box-sizing: border-box; }
+
+    body {
+      font-family: sans-serif;
+      width: 100vw;
+      height: 100vh;
+      display: grid;
+      place-items: center;
+    }
+
+    .card {
+      width: 50%;
+    }
+
+    .card__btn {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      background-color: navy;
+      color: white;
+      font-size: 1rem;
+      border: none;
+      border-radius: 4px 4px 0 0;
+      cursor: pointer;
+    }
+
+    .card__btn:hover { background-color: #001f5f; }
+
+    .card__text {
+      background-color: purple;
+      color: white;
+      padding: 16px;
+      text-align: justify;
+      line-height: 1.7;
+      margin: 0;
+      border-radius: 0 0 4px 4px;
+    }
+  </style>
 </head>
 <body>
-    <div class="main">
-        <div class="center">
-            <button onclick="fun()">Change/Reset</button>
-            <p id="para">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, sunt numquam ad inventore ipsam debitis praesentium quibusdam esse dignissimos ratione atque nam, nostrum quis possimus quasi placeat explicabo quo fugit voluptatem quaerat! Architecto quasi, nesciunt nulla pariatur voluptates possimus neque inventore autem facilis, distinctio vel odio dolor eveniet sunt expedita totam perferendis? Ducimus sapiente quia nisi tenetur dicta beatae dignissimos temporibus debitis aspernatur labore, minima recusandae? Sed delectus magnam, veritatis corrupti atque consectetur alias neque quia suscipit deleniti possimus, voluptatem enim earum modi dolore. Quidem aperiam doloremque odio illum, minima neque eligendi! Autem, alias.</p>
-        </div>
-    </div>
-    <script>
-        var text1 = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, sunt numquam ad inventore ipsam debitis praesentium quibusdam esse dignissimos ratione atque nam, nostrum quis possimus quasi placeat explicabo quo fugit voluptatem quaerat! Architecto quasi, nesciunt nulla pariatur voluptates possimus neque inventore autem facilis, distinctio vel odio dolor eveniet sunt expedita totam perferendis? Ducimus sapiente quia nisi tenetur dicta beatae dignissimos temporibus debitis aspernatur labore, minima recusandae? Sed delectus magnam, veritatis corrupti atque consectetur alias neque quia suscipit deleniti possimus, voluptatem enim earum modi dolore. Quidem aperiam doloremque odio illum, minima neque eligendi! Autem, alias."
-        var text2 = "Ut alias dolor cum quo omnis cumque enim veniam itaque, illo neque esse inventore animi consequatur reprehenderit nulla rerum facere ipsam dolore dolorum suscipit aut magnam laboriosam velit et. Totam cupiditate unde at autem dolore perspiciatis quaerat accusantium quia, quidem illo debitis minus consequatur quos distinctio asperiores velit cum modi facere aliquam nostrum dolor sed. Laborum id, doloremque ab deleniti a doloribus! Laboriosam ipsa labore perspiciatis, dolorem quidem in. Quis rerum minus dolores, facere magni, dolorum quas optio qui, quam mollitia vel doloremque pariatur. Repudiandae, ad consectetur natus optio deserunt odit dicta velit quae quis facere sapiente alias tempore molestias exercitationem non, placeat ullam assumenda harum."
-        var para = document.getElementById("para")
-        var flag = 2
-        function fun(){
-            if(flag==1){
-                para.innerHTML = text1
-                para.style.backgroundColor="purple"
-                flag = 2
-            }
-            else{
-                para.innerHTML = text2 
-                para.style.backgroundColor="green"
-                flag = 1
-            }
-        }
-    </script>
+
+  <div class="card">
+    <button class="card__btn" id="toggleBtn">Change / Reset</button>
+    <p class="card__text" id="contentPara">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, sunt numquam
+      ad inventore ipsam debitis praesentium quibusdam esse dignissimos ratione atque
+      nam, nostrum quis possimus quasi placeat explicabo quo fugit voluptatem quaerat!
+      Architecto quasi, nesciunt nulla pariatur voluptates possimus neque inventore
+      autem facilis, distinctio vel odio dolor eveniet sunt expedita totam perferendis?
+    </p>
+  </div>
+
+  <script>
+    const ORIGINAL_TEXT = document.getElementById('contentPara').textContent.trim();
+
+    const ALTERNATE_TEXT =
+      'Ut alias dolor cum quo omnis cumque enim veniam itaque, illo neque esse ' +
+      'inventore animi consequatur reprehenderit nulla rerum facere ipsam dolore ' +
+      'dolorum suscipit aut magnam laboriosam velit et. Totam cupiditate unde at ' +
+      'autem dolore perspiciatis quaerat accusantium quia, quidem illo debitis minus ' +
+      'consequatur quos distinctio asperiores velit cum modi facere aliquam nostrum dolor sed.';
+
+    const toggleBtn   = document.getElementById('toggleBtn');
+    const contentPara = document.getElementById('contentPara');
+    let   isAlternate = false;
+
+    toggleBtn.addEventListener('click', () => {
+      isAlternate = !isAlternate;
+
+      if (isAlternate) {
+        contentPara.textContent           = ALTERNATE_TEXT;
+        contentPara.style.backgroundColor = 'green';
+      } else {
+        contentPara.textContent           = ORIGINAL_TEXT;
+        contentPara.style.backgroundColor = 'purple';
+      }
+    });
+  </script>
+
 </body>
 </html>

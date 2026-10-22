@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DOM — Change Element Content</title>
+  <style>
+    * { margin: 0; box-sizing: border-box; }
+
+    body {
+      font-family: sans-serif;
+      width: 100vw;
+      height: 100vh;
+      display: grid;
+      place-items: center;
+    }
+
+    .card {
+      width: 60%;
+    }
+
+    .card__btn {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      background-color: navy;
+      color: white;
+      font-size: 1rem;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px 4px 0 0;
+    }
+
+    .card__btn:hover { background-color: #001f5f; }
+
+    .card__text {
+      background-color: blueviolet;
+      color: white;
+      padding: 30px 16px;
+      text-align: justify;
+      line-height: 1.7;
+      margin: 0;
+      border-radius: 0 0 4px 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <button class="card__btn" id="toggleBtn">Change</button>
+    <p class="card__text" id="contentPara">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, unde
+      nostrum sequi officiis aut fuga ullam vero animi quo pariatur reprehenderit
+      atque sapiente dignissimos sed voluptates ex maxime voluptate at voluptatem
+      aliquid labore mollitia. Reiciendis consequuntur blanditiis fugit optio illo
+      id a at repudiandae voluptates dolorem dicta omnis, distinctio modi ut.
+    </p>
+  </div>
+
+  <script>
+    const ORIGINAL_TEXT = document.getElementById('contentPara').textContent.trim();
+
+    const ALTERNATE_TEXT =
+      'Ut alias dolor cum quo omnis cumque enim veniam itaque, illo neque esse ' +
+      'inventore animi consequatur reprehenderit nulla rerum facere ipsam dolore ' +
+      'dolorum suscipit aut magnam laboriosam velit et. Totam cupiditate unde at ' +
+      'autem dolore perspiciatis quaerat accusantium quia, quidem illo debitis minus ' +
+      'consequatur quos distinctio asperiores velit cum modi facere aliquam nostrum dolor sed.';
+
+    const toggleBtn  = document.getElementById('toggleBtn');
+    const contentPara = document.getElementById('contentPara');
+    let   isAlternate = false;
+
+    toggleBtn.addEventListener('click', () => {
+      isAlternate = !isAlternate;
+
+      if (isAlternate) {
+        contentPara.textContent        = ALTERNATE_TEXT;
+        contentPara.style.backgroundColor = 'green';
+        toggleBtn.textContent          = 'Reset';
+      } else {
+        contentPara.textContent        = ORIGINAL_TEXT;
+        contentPara.style.backgroundColor = 'blueviolet';
+        toggleBtn.textContent          = 'Change';
+      }
+    });
+  </script>
+
+</body>
+</html>

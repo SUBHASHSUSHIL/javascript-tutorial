@@ -1,83 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <title>Document</title>
-    <style>
-        *{
-            margin: 0;
-        }
-        .main{
-            width: 100vw;
-            height: 100vh;
-        }
-        .center{
-            width: 70%;
-            margin: auto;
-            height: 100%;
-        }
-        .first{
-            width: 100%;
-            display: flex;
-            height: 7%;
-        }
-        .second{
-            height: 92%;
-            overflow: auto;
-        }
-        .first button{
-            width: 50%;
-            background-color: green;
-            color: white;
-            padding: 10px 0;
-            border: none;
-            margin: 1px;
-        }
-        .second p{
-            background-color: navy;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            margin: 5px 0;
-        }
-        .material-symbols-outlined{
-            float: right;
-            cursor: pointer;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DOM — Create & Delete Elements</title>
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+  />
+  <style>
+    * { margin: 0; box-sizing: border-box; }
+
+    body {
+      font-family: sans-serif;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .layout {
+      width: 70%;
+      margin: 0 auto;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .toolbar {
+      display: flex;
+      gap: 2px;
+      padding: 4px 0;
+    }
+
+    .toolbar__btn {
+      flex: 1;
+      background-color: green;
+      color: white;
+      padding: 10px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+
+    .toolbar__btn:hover { background-color: #005500; }
+
+    .item-list { flex: 1; overflow-y: auto; }
+
+    .item-list__entry {
+      background-color: navy;
+      color: white;
+      text-align: center;
+      padding: 10px 14px;
+      margin: 5px 0;
+      border-radius: 4px;
+    }
+
+    .material-symbols-outlined {
+      float: right;
+      cursor: pointer;
+      font-size: 1.2rem;
+    }
+
+    .material-symbols-outlined:hover { color: tomato; }
+  </style>
 </head>
 <body>
-    <div class="main">
-        <div class="center">
-            <div class="first">
-                <button onclick="fun1()">Create</button>
-                <button onclick="fun2()">Delete</button>
-            </div>
-            <div class="second">
-            </div>
-        </div>
+
+  <div class="layout">
+    <div class="toolbar">
+      <button class="toolbar__btn" id="createBtn">Create</button>
+      <button class="toolbar__btn" id="deleteFirstBtn">Delete First</button>
     </div>
-    <script>
-        var second = document.querySelector(".second")
-        var count  = 1
-        function fun1(){
-            var p = document.createElement("p")
-            p.innerHTML = `This is Paragraph p${count} <span class="material-symbols-outlined" onclick="remove('p${count}')">delete_forever</span>`
-            p.id = `p${count}`
-            second.appendChild(p)
-            count++
-        }
-        function fun2(){
-            // console.log(second.childNodes)
-            if(second.childNodes.length>1)
-            second.removeChild(second.childNodes[1])
-        }
-        function remove(id){
-            var p = document.getElementById(id)
-            second.removeChild(p)
-        }
-    </script>
+    <div class="item-list" id="itemList"></div>
+  </div>
+
+  <script>
+    const itemList       = document.getElementById('itemList');
+    const createBtn      = document.getElementById('createBtn');
+    const deleteFirstBtn = document.getElementById('deleteFirstBtn');
+    let   counter        = 1;
+
+    /** Creates a new paragraph entry and appends it to the list. */
+    function createEntry() {
+      const id    = `entry-${counter}`;
+      const entry = document.createElement('p');
+      entry.id        = id;
+      entry.className = 'item-list__entry';
+      entry.innerHTML =
+        `Paragraph ${counter} ` +
+        `<span class="material-symbols-outlined" data-id="${id}" title="Delete">delete_forever</span>`;
+      itemList.appendChild(entry);
+      counter++;
+    }
+
+    /** Removes the first child entry from the list. */
+    function deleteFirstEntry() {
+      const first = itemList.firstElementChild;
+      if (first) itemList.removeChild(first);
+    }
+
+    /**
+     * Handles clicks on individual delete icons via event delegation.
+     * @param {MouseEvent} event
+     */
+    function handleDeleteIcon(event) {
+      const icon = event.target.closest('.material-symbols-outlined');
+      if (!icon) return;
+      const entry = document.getElementById(icon.dataset.id);
+      if (entry) itemList.removeChild(entry);
+    }
+
+    createBtn.addEventListener('click', createEntry);
+    deleteFirstBtn.addEventListener('click', deleteFirstEntry);
+    itemList.addEventListener('click', handleDeleteIcon);
+  </script>
+
 </body>
 </html>

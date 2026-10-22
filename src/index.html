@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JavaScript DOM Tutorial</title>
+  <style>
+    * { margin: 0; box-sizing: border-box; }
+
+    body {
+      font-family: system-ui, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    header h1 {
+      font-size: 2.2rem;
+      color: #58a6ff;
+    }
+
+    header p {
+      margin-top: 8px;
+      color: #8b949e;
+      font-size: 1rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 20px;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: border-color 0.2s, transform 0.15s;
+    }
+
+    .card:hover {
+      border-color: #58a6ff;
+      transform: translateY(-3px);
+    }
+
+    .card__tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: #3fb950;
+    }
+
+    .card__title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #e6edf3;
+    }
+
+    .card__desc {
+      font-size: 0.88rem;
+      color: #8b949e;
+      line-height: 1.5;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 60px;
+      color: #484f58;
+      font-size: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>JavaScript DOM Tutorial</h1>
+    <p>Practical examples covering selectors, events, and dynamic manipulation.</p>
+  </header>
+
+  <main class="grid">
+
+    <a class="card" href="dom-selectors.html">
+      <span class="card__tag">Selectors</span>
+      <span class="card__title">DOM Selectors</span>
+      <p class="card__desc">
+        getElementById, getElementsByClassName, getElementsByTagName,
+        querySelector, and querySelectorAll — with live style demonstrations.
+      </p>
+    </a>
+
+    <a class="card" href="dom-style-properties.html">
+      <span class="card__tag">Styling</span>
+      <span class="card__title">Style Properties</span>
+      <p class="card__desc">
+        Apply CSS via <code>element.style</code> and an <code>applyStyles</code>
+        helper that accepts plain objects, removing repetitive per-element code.
+      </p>
+    </a>
+
+    <a class="card" href="dom-change-content.html">
+      <span class="card__tag">Manipulation</span>
+      <span class="card__title">Change Element Content</span>
+      <p class="card__desc">
+        Toggle between two text blocks and matching background colours with a
+        single button, using a boolean flag and <code>textContent</code>.
+      </p>
+    </a>
+
+    <a class="card" href="dom-create-delete-elements.html">
+      <span class="card__tag">Manipulation</span>
+      <span class="card__title">Create &amp; Delete Elements</span>
+      <p class="card__desc">
+        Dynamically append paragraph nodes and remove them by button click or
+        the per-row icon, using event delegation on the container.
+      </p>
+    </a>
+
+    <a class="card" href="dom-class-toggle.html">
+      <span class="card__tag">CSS Classes</span>
+      <span class="card__title">Class Toggle (Accordion Menu)</span>
+      <p class="card__desc">
+        Show and hide a navigation menu by toggling a CSS class, plus correct
+        <code>aria-expanded</code> state for accessibility.
+      </p>
+    </a>
+
+    <a class="card" href="dom-form-events.html">
+      <span class="card__tag">Events</span>
+      <span class="card__title">Form Events</span>
+      <p class="card__desc">
+        Handle focus, blur, and change on every field with a single loop.
+        Live preview badges update on change; submission uses a native
+        <code>&lt;dialog&gt;</code> instead of <code>alert()</code>.
+      </p>
+    </a>
+
+    <a class="card" href="dom-mouse-events.html">
+      <span class="card__tag">Events</span>
+      <span class="card__title">Mouse Events</span>
+      <p class="card__desc">
+        Ten mouse events wired with <code>addEventListener</code> via a config
+        array — no repetitive handler functions.
+      </p>
+    </a>
+
+    <a class="card" href="dom-timer-countdown.html">
+      <span class="card__tag">Timers</span>
+      <span class="card__title">Countdown Timer</span>
+      <p class="card__desc">
+        <code>setInterval</code>-based countdown to a configurable target date,
+        with clean day / hour / minute / second decomposition and a celebration
+        message on expiry.
+      </p>
+    </a>
+
+    <a class="card" href="dom-image-slider.html">
+      <span class="card__tag">UI Component</span>
+      <span class="card__title">Image Slider</span>
+      <p class="card__desc">
+        Auto-advancing carousel with previous/next buttons, dot indicators,
+        and pause-on-hover — all bugs from the original fixed.
+      </p>
+    </a>
+
+    <a class="card" href="event-propagation.html">
+      <span class="card__tag">Events</span>
+      <span class="card__title">Event Propagation</span>
+      <p class="card__desc">
+        Interactive demo of bubbling vs. capturing phases across five nested
+        boxes, with a toggle to stop propagation and a live log.
+      </p>
+    </a>
+
+  </main>
+
+  <footer>JavaScript DOM Tutorial — Refactored</footer>
+
+</body>
+</html>

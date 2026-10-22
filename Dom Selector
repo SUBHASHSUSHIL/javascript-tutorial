@@ -1,81 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DOM — Style Properties</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+    }
+
+    p {
+      margin: 6px 0;
+      padding: 10px;
+      border-radius: 4px;
+      line-height: 1.6;
+    }
+  </style>
 </head>
 <body>
-    <p class="sample1" id="p1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi odio consectetur ipsa, corporis debitis reiciendis ipsam, a doloribus laudantium sit iure eveniet soluta, quisquam quia dolores esse quos officia necessitatibus totam dolor amet laboriosam veritatis? Necessitatibus labore delectus deleniti expedita voluptatem dolore ullam iste alias! Dolor, quidem modi aspernatur qui minima assumenda temporibus dignissimos, expedita earum quibusdam animi nisi totam! Omnis minima aspernatur ex expedita odit obcaecati doloremque culpa laborum consectetur ab suscipit vero laudantium delectus accusamus, neque illo officia velit sequi fuga ducimus ipsum in cupiditate officiis esse. Perspiciatis est delectus aliquid consequatur minima ad nemo voluptatibus sit amet!</p>
-    <p class="sample1" id="p2">Beatae quam at consequuntur quibusdam saepe deserunt assumenda itaque sint necessitatibus suscipit numquam inventore quaerat, totam sit. Expedita, aut repellendus ex dolores incidunt nesciunt, et eligendi corporis accusamus commodi illo, voluptatem quas nihil iste optio! Pariatur placeat expedita fugiat repudiandae temporibus possimus id atque reprehenderit quisquam nesciunt! Magnam nobis, optio voluptas in expedita ullam nam vero totam delectus iste obcaecati earum ipsam exercitationem accusantium nisi fugiat unde illum et iure. Vitae eveniet animi nobis omnis incidunt provident fuga distinctio, placeat eligendi quibusdam ducimus, aspernatur, eaque cum harum dolore sint sequi. Facere voluptas illum id labore eligendi ipsum aliquam delectus consequuntur.</p>
-    <p class="sample1" id="p3">Cupiditate, fugit ullam atque repellendus deserunt sint beatae facere culpa suscipit, voluptatem corrupti illum dignissimos voluptate perferendis id blanditiis inventore quasi quam maxime rem, dolorum sit soluta a nemo. Veritatis aut ducimus corporis! Animi nam autem eum quae temporibus perspiciatis ut omnis tempore, dolore porro soluta corporis deleniti! Laboriosam, odio nesciunt. Quasi libero veniam laboriosam numquam modi, explicabo nulla incidunt ipsum in quam hic provident velit dolore recusandae magnam alias cum dolorem quis! Animi culpa praesentium enim ducimus veritatis non incidunt repudiandae sequi ex porro, quis quidem, consequatur tenetur nihil alias dolore veniam? Quaerat perspiciatis commodi obcaecati quasi! Voluptates, molestiae!</p>
-    <p class="sample1" id="p4">Corporis nam aliquid delectus quaerat maxime nisi odio! Repellendus ut quisquam labore eaque, fugiat vero libero nostrum beatae animi porro, culpa excepturi quasi, deleniti debitis magnam ratione necessitatibus laborum et hic doloribus? Culpa excepturi debitis obcaecati sequi illo laboriosam praesentium laborum ex consectetur saepe, temporibus harum tenetur amet facilis nam eaque provident, eveniet reprehenderit vero cumque sed repellat. Cupiditate perspiciatis quam necessitatibus iure quasi modi beatae nihil optio aspernatur, similique corporis sunt obcaecati reprehenderit ratione distinctio quisquam. Omnis magnam voluptas reprehenderit reiciendis atque molestiae quidem accusantium rem veritatis necessitatibus, fugiat numquam aliquam optio incidunt consequatur blanditiis natus nisi aspernatur nostrum.</p>
-    <p class="sample1" id="p5">Minus tempore, dicta laborum sunt illum, totam corrupti repudiandae impedit quia quo reprehenderit ullam magni esse eum. Quis molestias amet ipsam repellat ducimus quibusdam illum cum quaerat assumenda dolorum natus, unde, cupiditate modi magni tempora minima sunt officia magnam pariatur saepe repudiandae blanditiis a. Aspernatur enim laboriosam consectetur quod illum quisquam voluptate maiores magni dicta itaque neque deserunt est impedit hic laborum iusto labore ratione vitae qui perspiciatis, non id in inventore magnam. Ipsa ut labore esse itaque architecto tenetur suscipit voluptatibus et neque voluptas qui consequatur quibusdam totam, impedit recusandae cum illo cupiditate rem commodi inventore corporis est dolor!</p>
-    <p class="sample1" id="p6">Necessitatibus sunt illo ad labore aspernatur vero atque eaque dicta voluptas porro magnam nisi, aperiam accusantium qui iure quam. Voluptatibus atque labore laborum illum? Repellendus obcaecati est sint quibusdam, dignissimos animi ex consequuntur suscipit quas assumenda nobis mollitia ipsam non nihil veniam provident porro vel quisquam quod ratione distinctio. Hic delectus commodi veniam recusandae pariatur ad quos iusto ut. Voluptate veniam, ratione cupiditate alias quas amet temporibus hic facilis dolorum omnis aliquid sapiente quod cumque officia maiores modi veritatis doloremque ex voluptates architecto non numquam! Molestiae, inventore. Impedit maiores exercitationem natus architecto animi dicta porro, velit magnam, sint cupiditate aspernatur.</p>
-    <p class="sample1" id="p7">Repellat maxime voluptate ad a commodi sint debitis aspernatur, quisquam omnis esse eveniet in alias cumque natus, temporibus doloremque, voluptas id incidunt soluta quasi totam perspiciatis quia rem. Quia, maxime ipsum. Maiores molestias quis voluptas iusto ab, nulla in assumenda accusantium voluptatum commodi, alias fugiat. Placeat laborum consectetur incidunt hic unde. Omnis culpa veritatis, id at consequuntur unde! Tempora fugiat similique, officiis deserunt laudantium sint nulla id impedit iste distinctio facilis laborum necessitatibus a odio perspiciatis aut expedita saepe earum quo sit nostrum vitae ut! Exercitationem pariatur nihil officiis dolores, distinctio maiores nisi repellendus porro ducimus dolorem eum perferendis aliquam!</p>
-    <p class="sample1" id="p8">Cupiditate sapiente laboriosam repudiandae animi labore fugiat odio veritatis atque? Similique nemo assumenda doloremque illum, aspernatur architecto maiores, consequuntur iure ullam necessitatibus, distinctio facere odio rerum voluptas deserunt quam dolorum voluptates eum? Reiciendis, eos. Maiores, hic eius. Pariatur, eveniet odio. Delectus earum alias praesentium, dolor quos impedit ad nesciunt consequuntur placeat suscipit. Totam natus quibusdam, dignissimos explicabo quidem repellendus inventore quos at quae facere, cupiditate nesciunt reiciendis voluptatibus molestias harum quo id. Dolorem maiores laboriosam, doloribus magni ratione explicabo aperiam expedita? A, exercitationem molestiae tempora temporibus consequuntur rerum reiciendis quia magni perferendis? Saepe libero ipsum fugiat numquam necessitatibus animi ex.</p>
-    <p class="sample1" id="p9">Eius provident asperiores, odio molestias corrupti, labore rerum iure error repellat a consequuntur porro quasi consectetur sit iusto saepe modi quas harum iste nobis distinctio aperiam placeat recusandae. Suscipit facere voluptatibus deserunt magni nisi nostrum, magnam deleniti sunt eos quod rem vero temporibus porro dignissimos ipsa excepturi velit quidem assumenda expedita corporis explicabo perferendis sed dolor animi. Nisi exercitationem, minima quaerat veniam nemo repudiandae animi tempore voluptatibus at labore enim nihil culpa corrupti eaque sint sit expedita aperiam quam pariatur facere facilis eveniet ducimus quia praesentium! Dolore laudantium, minus cumque suscipit, delectus illo magni, adipisci architecto exercitationem iure eveniet maiores!</p>
-    <p class="sample1" id="p10">Optio pariatur suscipit modi eius qui veritatis nobis. Nostrum maxime temporibus perferendis quas sapiente, sit repellendus alias distinctio, dolores, sed tempora error et earum non doloribus. Reprehenderit nihil commodi corporis est quis ab amet repudiandae quos optio unde illum dolor, expedita totam laborum non a beatae consectetur consequuntur esse? Natus expedita doloremque maiores velit suscipit id iste repellat sequi odit tempore ipsa delectus, autem omnis dicta sed eius voluptatibus! Expedita pariatur, nobis excepturi accusamus fugiat quis omnis necessitatibus veritatis adipisci accusantium, blanditiis cum. Incidunt sapiente placeat amet ullam et eveniet, delectus vitae beatae inventore id officia minus doloribus, libero dolorem?</p>
 
-    <script>
-        var p = document.getElementById("p1")
-        // console.log(p)
-        p.style.backgroundColor = "navy"
-        p.style.color = "white"
-        p.style.textAlign = "justify"
-        p.style.padding = "20px"
+  <p id="p1">Paragraph 1</p>
+  <p id="p2">Paragraph 2</p>
+  <p id="p3">Paragraph 3</p>
+  <p id="p4">Paragraph 4</p>
+  <p id="p5">Paragraph 5</p>
+  <p id="p6">Paragraph 6</p>
+  <p id="p7">Paragraph 7</p>
+  <p id="p8">Paragraph 8</p>
+  <p id="p9">Paragraph 9</p>
+  <p id="p10">Paragraph 10</p>
 
-        var p = document.getElementById("p2")
-        p.style.backgroundColor = "yellow"
-        p.style.color = "navy"
-        p.style.padding = "30px"
-        p.style.textAlign = "center"
+  <script>
+    /**
+     * Applies a plain object of CSS properties to an element by ID.
+     * @param {string} id
+     * @param {Partial<CSSStyleDeclaration>} styles
+     */
+    function applyStyles(id, styles) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      Object.assign(el.style, styles);
+    }
 
-        var p = document.getElementById("p3")
-        p.style.backgroundColor = "Red"
-        p.style.color = "navy"
-        p.style.padding = "40px"
-        p.style.textAlign = "right"
-
-        var p = document.getElementById("p4")
-        p.style.backgroundColor = "brown"
-        p.style.color = "white"
-        p.style.padding = "5px"
-        p.style.float = "left"
-
-        var p = document.getElementById("p5")
-        p.style.backgroundColor = "magenta"
-        p.style.color = "white"
-        p.style.padding = "0px"
-        p.style.textAlign = "justify"
-
-        var p = document.getElementById("p6")
-        p.style.backgroundColor = "purple"
-        p.style.color = "yellow"
-        p.style.padding = "30px"
-
-        var p = document.getElementById("p7")
-        p.style.border = "5px solid"
-        p.style.backgroundColor = "blue"
-        p.style.color = "white"
-
-        var p = document.getElementById("p8")
-        p.style.backgroundColor = "Pink"
-        p.style.fontSize = "25px"
-        p.style.color = "white"
-
-        var p = document.getElementById("p9")
-        p.style.backgroundColor = "orange"
-        p.style.color = "red"
-        p.style.placeItems ="center"
-        p.style.textAlign = "justify"
-
-        var p = document.getElementById("p10")
-        p.style.backgroundColor = "navy"
-        p.style.color = "white"
-        p.style.padding = "20px"
-
-    </script>
+    applyStyles('p1',  { backgroundColor: 'navy',    color: 'white',  textAlign: 'justify', padding: '20px' });
+    applyStyles('p2',  { backgroundColor: 'yellow',  color: 'navy',   textAlign: 'center',  padding: '30px' });
+    applyStyles('p3',  { backgroundColor: 'red',     color: 'navy',   textAlign: 'right',   padding: '40px' });
+    applyStyles('p4',  { backgroundColor: 'brown',   color: 'white',  float: 'left',        padding: '5px'  });
+    applyStyles('p5',  { backgroundColor: 'magenta', color: 'white',  textAlign: 'justify'                  });
+    applyStyles('p6',  { backgroundColor: 'purple',  color: 'yellow', padding: '30px'                       });
+    applyStyles('p7',  { backgroundColor: 'blue',    color: 'white',  border: '5px solid white'             });
+    applyStyles('p8',  { backgroundColor: 'pink',    color: 'white',  fontSize: '25px'                      });
+    applyStyles('p9',  { backgroundColor: 'orange',  color: 'red',    textAlign: 'justify'                  });
+    applyStyles('p10', { backgroundColor: 'navy',    color: 'white',  padding: '20px'                       });
+  </script>
 
 </body>
 </html>

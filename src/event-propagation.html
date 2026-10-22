@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DOM — Event Propagation</title>
+  <style>
+    * { margin: 0; box-sizing: border-box; }
+
+    body {
+      font-family: sans-serif;
+      padding: 30px;
+    }
+
+    h2 { margin-bottom: 8px; }
+
+    .controls {
+      margin-bottom: 20px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .controls label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+
+    /* ── Nested boxes ── */
+    .box {
+      display: grid;
+      place-items: center;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 0.85rem;
+      color: white;
+      text-shadow: 0 1px 2px rgba(0,0,0,.5);
+      transition: outline 0.1s;
+    }
+
+    .box:focus-visible { outline: 3px solid yellow; }
+
+    .box--outer  { width: 440px; height: 440px; background: #1a237e; }  /* dark blue  */
+    .box--child1 { width: 82%;   height: 82%;   background: #1565c0; }  /* blue       */
+    .box--child2 { width: 82%;   height: 82%;   background: #2e7d32; }  /* green      */
+    .box--child3 { width: 82%;   height: 82%;   background: #424242; }  /* charcoal   */
+    .box--inner  { width: 62%;   height: 62%;   background: #f5f5f5; color: #333; border-radius: 4px; }
+
+    /* Log area */
+    .log {
+      margin-top: 20px;
+      padding: 12px;
+      background: #fafafa;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      max-height: 200px;
+      overflow-y: auto;
+      font-size: 0.85rem;
+      font-family: monospace;
+    }
+
+    .log__entry { padding: 2px 0; border-bottom: 1px solid #eee; }
+    .log__entry:last-child { border-bottom: none; }
+    .log__entry--capture { color: #1565c0; }
+    .log__entry--bubble  { color: #c62828; }
+
+    .btn-clear {
+      padding: 6px 14px;
+      background: #555;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Event Propagation</h2>
+
+  <div class="controls">
+    <label>
+      <input type="radio" name="phase" value="capture" id="radioCapture" />
+      Capture phase (top → target)
+    </label>
+    <label>
+      <input type="radio" name="phase" value="bubble" id="radioBubble" checked />
+      Bubble phase (target → top)
+    </label>
+    <label>
+      <input type="checkbox" id="stopPropCheck" />
+      Stop propagation at target
+    </label>
+    <button class="btn-clear" id="clearLogBtn">Clear log</button>
+  </div>
+
+  <!-- Nested boxes -->
+  <div class="box box--outer"  id="boxOuter"  tabindex="0">Outer
+    <div class="box box--child1" id="boxChild1" tabindex="0">Child 1
+      <div class="box box--child2" id="boxChild2" tabindex="0">Child 2
+        <div class="box box--child3" id="boxChild3" tabindex="0">Child 3
+          <div class="box box--inner" id="boxInner" tabindex="0">Click me</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="log" id="eventLog"></div>
+
+  <script>
+    const BOXES = [
+      { id: 'boxOuter',  label: 'Outer'   },
+      { id: 'boxChild1', label: 'Child 1' },
+      { id: 'boxChild2', label: 'Child 2' },
+      { id: 'boxChild3', label: 'Child 3' },
+      { id: 'boxInner',  label: 'Inner'   },
+    ];
+
+    const eventLog     = document.getElementById('eventLog');
+    const stopPropCheck = document.getElementById('stopPropCheck');
+    const clearLogBtn  = document.getElementById('clearLogBtn');
+    const radioCapture = document.getElementById('radioCapture');
+    const radioBubble  = document.getElementById('radioBubble');
+
+    let currentListeners = [];
+
+    /**
+     * Appends a message to the on-screen log.
+     * @param {string} text
+     * @param {'capture'|'bubble'} phase
+     */
+    function log(text, phase) {
+      const entry = document.createElement('div');
+      entry.className = `log__entry log__entry--${phase}`;
+      entry.textContent = text;
+      eventLog.appendChild(entry);
+      eventLog.scrollTop = eventLog.scrollHeight;
+    }
+
+    /** Removes all previously registered listeners, then re-attaches them. */
+    function rebindListeners() {
+      // Remove old listeners
+      currentListeners.forEach(({ el, fn, useCapture }) => {
+        el.removeEventListener('click', fn, useCapture);
+      });
+      currentListeners = [];
+
+      const useCapture = radioCapture.checked;
+      const phase      = useCapture ? 'capture' : 'bubble';
+
+      BOXES.forEach(({ id, label }) => {
+        const el = document.getElementById(id);
+
+        const handler = (event) => {
+          log(`${label} clicked  [${phase}]`, phase);
+
+          if (stopPropCheck.checked) {
+            event.stopPropagation();
+            log(`  ↳ propagation stopped at ${label}`, phase);
+          }
+        };
+
+        el.addEventListener('click', handler, useCapture);
+        currentListeners.push({ el, fn: handler, useCapture });
+      });
+    }
+
+    // Rebind whenever the phase radio changes
+    radioCapture.addEventListener('change', rebindListeners);
+    radioBubble.addEventListener('change',  rebindListeners);
+
+    clearLogBtn.addEventListener('click', () => { eventLog.innerHTML = ''; });
+
+    // Initial bind
+    rebindListeners();
+  </script>
+
+</body>
+</html>

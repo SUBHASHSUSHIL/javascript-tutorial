@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DOM — Form Events</title>
+  <style>
+    * { margin: 0; box-sizing: border-box; }
+
+    body {
+      font-family: sans-serif;
+      min-height: 100vh;
+      padding: 30px 0;
+    }
+
+    .container {
+      width: 70%;
+      margin: 0 auto;
+    }
+
+    /* ── Preview badges ── */
+    .preview {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 4px;
+      margin-bottom: 16px;
+    }
+
+    .preview__badge {
+      background-color: green;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      border-radius: 4px;
+      font-size: 0.9rem;
+    }
+
+    /* ── Form ── */
+    .form__field {
+      display: block;
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      transition: background-color 0.2s, border-color 0.2s;
+    }
+
+    /* State classes applied by JS */
+    .form__field--focus  { background-color: #e0f7fa; border-color: navy; color: navy; }
+    .form__field--blur   { background-color: #f0f0f0; border-color: #999; color: navy; }
+    .form__field--filled { background-color: white;   border-color: green; color: black; }
+
+    .form__submit {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: green;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .form__submit:hover { background-color: #005500; }
+
+    /* Summary dialog */
+    dialog {
+      border: none;
+      border-radius: 8px;
+      padding: 24px 32px;
+      min-width: 300px;
+      box-shadow: 0 4px 20px rgba(0,0,0,.3);
+    }
+
+    dialog h3 { margin-bottom: 12px; }
+
+    dialog table { border-collapse: collapse; width: 100%; }
+    dialog td    { padding: 6px 12px; border-bottom: 1px solid #eee; }
+    dialog td:first-child { font-weight: bold; color: #333; }
+
+    dialog button {
+      margin-top: 16px;
+      padding: 8px 20px;
+      background: navy;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="preview">
+      <div class="preview__badge" id="badge-fname">Name: —</div>
+      <div class="preview__badge" id="badge-email">Email: —</div>
+      <div class="preview__badge" id="badge-phone">Phone: —</div>
+      <div class="preview__badge" id="badge-designation">Designation: —</div>
+      <div class="preview__badge" id="badge-salary">Salary: —</div>
+      <div class="preview__badge" id="badge-city">City: —</div>
+      <div class="preview__badge" id="badge-state">State: —</div>
+    </div>
+
+    <form id="employeeForm" novalidate>
+      <input class="form__field" type="text"   id="fname"       name="fname"       placeholder="Full name"       required />
+      <input class="form__field" type="email"  id="email"       name="email"       placeholder="Email address"   required />
+      <input class="form__field" type="tel"    id="phone"       name="phone"       placeholder="Phone number"    required />
+      <input class="form__field" type="text"   id="designation" name="designation" placeholder="Designation"     required />
+      <input class="form__field" type="number" id="salary"      name="salary"      placeholder="Salary"          required />
+      <input class="form__field" type="text"   id="city"        name="city"        placeholder="City"            required />
+      <input class="form__field" type="text"   id="state"       name="state"       placeholder="State"           required />
+      <button class="form__submit" type="submit">Submit</button>
+    </form>
+  </div>
+
+  <!-- Native dialog instead of alert() -->
+  <dialog id="summaryDialog">
+    <h3>Employee Summary</h3>
+    <table id="summaryTable"></table>
+    <button id="closeDialogBtn">Close</button>
+  </dialog>
+
+  <script>
+    const FIELDS = ['fname', 'email', 'phone', 'designation', 'salary', 'city', 'state'];
+
+    // ── Attach focus / blur / change listeners to every field ──────────
+    FIELDS.forEach((fieldId) => {
+      const input = document.getElementById(fieldId);
+      const badge = document.getElementById(`badge-${fieldId}`);
+
+      input.addEventListener('focus', () => {
+        input.classList.remove('form__field--blur', 'form__field--filled');
+        input.classList.add('form__field--focus');
+        console.log(`focus → ${fieldId}`);
+      });
+
+      input.addEventListener('blur', () => {
+        input.classList.remove('form__field--focus', 'form__field--filled');
+        input.classList.add('form__field--blur');
+        console.log(`blur → ${fieldId}`);
+      });
+
+      input.addEventListener('change', () => {
+        input.classList.remove('form__field--focus', 'form__field--blur');
+        input.classList.add('form__field--filled');
+
+        // Update preview badge — capitalise the field label
+        const label = fieldId.charAt(0).toUpperCase() + fieldId.slice(1);
+        badge.textContent = `${label}: ${input.value}`;
+        console.log(`change → ${fieldId} = "${input.value}"`);
+      });
+    });
+
+    // ── Form submission ────────────────────────────────────────────────
+    const form           = document.getElementById('employeeForm');
+    const summaryDialog  = document.getElementById('summaryDialog');
+    const summaryTable   = document.getElementById('summaryTable');
+    const closeDialogBtn = document.getElementById('closeDialogBtn');
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      const rows = FIELDS.map((fieldId) => {
+        const label = fieldId.charAt(0).toUpperCase() + fieldId.slice(1);
+        const value = document.getElementById(fieldId).value;
+        return `<tr><td>${label}</td><td>${value}</td></tr>`;
+      });
+
+      summaryTable.innerHTML = rows.join('');
+      summaryDialog.showModal();
+    });
+
+    closeDialogBtn.addEventListener('click', () => summaryDialog.close());
+  </script>
+
+</body>
+</html>

@@ -1,143 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DOM — Selectors</title>
 </head>
-
 <body>
-    <p id="p1" class="sample1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi cumque dolores amet illum
-        beatae officiis reprehenderit rerum ipsum laboriosam. Nesciunt vero voluptatem voluptatum velit exercitationem
-        nam cumque explicabo laudantium cum vel ut accusantium voluptates dicta earum architecto, officiis enim aut modi
-        perferendis assumenda? Animi fugit quasi enim iusto, minima suscipit nulla, magnam exercitationem vero
-        accusantium obcaecati dicta laborum sunt quaerat molestiae provident quibusdam commodi nihil ipsam pariatur
-        autem. Sed, ipsam voluptas eveniet expedita nemo ab earum corrupti? Beatae minima quaerat, at delectus sunt nemo
-        ducimus reiciendis veniam vero amet dolor aspernatur obcaecati quisquam aperiam asperiores repellendus
-        doloremque veritatis expedita saepe.</p>
-    <p id="p2" class="sample1">Voluptates exercitationem autem saepe sint totam ipsam, ex aliquam eveniet? Aliquid, nam!
-        Quibusdam libero temporibus itaque ipsum vitae nisi error omnis labore laborum ducimus, vel obcaecati rerum
-        beatae aut suscipit architecto minima! Quo in, corrupti reprehenderit, minima laboriosam animi repellendus
-        asperiores esse eius aspernatur, unde deserunt eveniet. Ducimus ab aspernatur illum voluptas corrupti expedita
-        eveniet. Ex assumenda saepe quisquam quia soluta deserunt nam molestias consectetur magnam, vel omnis explicabo
-        pariatur dolorum beatae ea enim. Labore commodi, harum, similique dolore quia nam, doloremque fugiat fuga
-        assumenda nemo id vitae culpa impedit perspiciatis at architecto cumque. In atque voluptatum sapiente iure
-        nihil!</p>
-    <p id="p3" class="sample1">Omnis harum et facilis placeat at sed tempora, ab ducimus excepturi nam libero nobis non
-        quisquam quia dolorum a, velit iure ipsam blanditiis voluptates natus eveniet aut. Veritatis itaque quam dolore
-        libero nam dolor reiciendis assumenda veniam perferendis tempora, totam aspernatur dicta adipisci a ipsam
-        laboriosam sequi earum, nostrum voluptate vero asperiores dignissimos, aperiam aliquid debitis. Adipisci in
-        obcaecati non sapiente. Sit blanditiis, sed consequuntur reiciendis soluta modi ducimus error non eum, a
-        laudantium reprehenderit, nihil vitae fugiat numquam at. Iure dicta fugiat itaque! Delectus recusandae libero,
-        numquam ullam, doloribus nisi minus nesciunt veritatis commodi quod quos eius blanditiis veniam?</p>
-    <p id="p4" class="sample1">Magni doloremque fugit obcaecati repellat mollitia, culpa voluptas sapiente consectetur
-        omnis iusto saepe commodi ex soluta, quo accusantium at ducimus neque laudantium, modi praesentium quaerat enim
-        a. Quisquam quasi vitae earum, fugit impedit doloribus veniam quia laborum? Illum rerum blanditiis
-        exercitationem hic! Veniam veritatis obcaecati assumenda totam natus quae cumque praesentium, maiores similique
-        quas repellendus odio ipsa earum architecto quam, dolorem numquam facere! Saepe obcaecati aperiam ut nesciunt,
-        adipisci illum quia atque nihil magnam exercitationem eveniet consequatur eos earum, eius cumque eligendi
-        facilis a sit! Pariatur reprehenderit nesciunt non, corporis autem odit! Exercitationem non ad modi quod qui
-        veniam mollitia!</p>
-    <p id="p5" class="sample1">Pariatur voluptatibus distinctio maxime aliquid incidunt assumenda in, quis eligendi id
-        quas eos praesentium fugit minima cum, minus molestiae perferendis animi? Nostrum possimus ipsa harum quam animi
-        exercitationem incidunt veritatis laudantium accusamus, a vitae repudiandae doloribus commodi reiciendis
-        adipisci similique, optio et rerum ratione ab magnam iusto? Id eos voluptas totam, possimus ea sed fuga pariatur
-        libero voluptatem, itaque consequuntur? Distinctio modi accusantium eius fuga sunt dolorem cum eveniet quos
-        officiis. Iure quasi nihil culpa eligendi adipisci voluptate in deserunt ullam assumenda! Placeat voluptate iste
-        laudantium eos aliquid cumque eius architecto, maiores expedita saepe quas, officia amet sit, similique vero?
-    </p>
-    <p id="p6" class="sample2">Aliquam, quidem. Nesciunt placeat illum sint, totam quia dolorum, voluptatum veritatis
-        obcaecati fuga reiciendis, nulla libero rem saepe vitae corrupti eum blanditiis assumenda commodi voluptatibus
-        possimus voluptates ad nostrum. Omnis, nostrum sequi perferendis facere molestias animi, voluptatibus vitae
-        praesentium aliquid deleniti molestiae. Error facilis consequatur libero veritatis quia, consectetur, harum
-        temporibus saepe pariatur modi molestiae ea obcaecati alias omnis aspernatur veniam deserunt! Illo at maiores
-        tempore dicta rerum repudiandae quae eum consequuntur, nam vitae quisquam officia ipsa. Debitis incidunt, ex
-        labore repudiandae dicta enim eum. Expedita, esse nisi laborum sed quisquam eveniet ullam, dolorem ea quia
-        earum, quod impedit labore!</p>
-    <p id="p7" class="sample2">Neque laudantium a cupiditate vero eveniet nulla unde dolores laborum, placeat quam
-        magnam aliquid corrupti voluptas, dolorum sequi omnis inventore reprehenderit doloremque at provident quibusdam
-        excepturi repellat quas accusamus. Consectetur reiciendis, in voluptatum nesciunt libero quo ea nulla vel
-        aspernatur nam corporis accusantium quia sit mollitia laudantium officiis ut exercitationem alias id sint ad.
-        Nihil quisquam eius sit assumenda sunt a nam quas obcaecati illum eos dicta laborum quo esse saepe illo,
-        corrupti sapiente labore earum totam neque deserunt maiores? Et libero, aut, magni illo at laboriosam sunt
-        facere iusto enim quasi voluptatem velit nulla expedita doloribus, optio sint ullam?</p>
-    <p id="p8" class="sample2">Soluta sit nemo quibusdam aliquam, sequi assumenda omnis minima architecto vero modi
-        neque odit praesentium eligendi possimus dolores error excepturi aliquid id magni expedita nisi! Ratione eum
-        exercitationem quos quisquam ipsa cupiditate fugiat modi suscipit? Deleniti nemo, exercitationem facilis illo
-        aliquid ab doloremque quos veritatis iure vero consectetur eligendi odio omnis voluptas quasi repudiandae eos
-        ipsam. Eligendi sint eum nisi placeat veritatis in aut dolores optio pariatur quibusdam eaque aspernatur culpa
-        ut velit distinctio, eius quidem officia, ullam, quaerat sit quam officiis ex error? Cupiditate vel blanditiis
-        harum, voluptatum iure dolores natus maxime voluptate, voluptates provident quaerat omnis repellendus corrupti.
-    </p>
-    <p id="p9" class="sample2">Consequuntur illo adipisci optio iste asperiores excepturi, voluptates numquam eaque
-        sequi architecto, consequatur hic beatae, est accusamus illum. Odio perspiciatis voluptate nemo accusantium
-        ipsam placeat rem laborum, autem magnam porro, fugit iusto alias id. Nihil sed, repudiandae facilis placeat unde
-        nam ratione mollitia praesentium quia sint! Omnis voluptatibus vero suscipit est cumque corrupti. Itaque eos
-        officia esse qui laudantium. Explicabo impedit nostrum soluta consectetur debitis inventore ullam iure labore
-        voluptate sed exercitationem, voluptatibus dolores, voluptas aperiam accusantium delectus sapiente perspiciatis
-        quas, ex dicta laudantium! Tempora, porro minima repellendus dolor non accusamus sit quae ea illum eaque tempore
-        esse, assumenda voluptatem.</p>
-    <p id="p10" class="sample2">Possimus dicta nostrum facere enim nam porro, vel harum sunt. Esse rem deserunt amet
-        officiis fugit eligendi, ex dolor dolore, tempora eaque quo provident ratione exercitationem sequi officia
-        minima magnam ea, quae voluptas. Sint recusandae, voluptas veniam et fuga perspiciatis saepe tenetur incidunt.
-        Eaque numquam voluptatem accusamus minima ab sit omnis repudiandae? Inventore repellat, qui iure ipsa
-        perspiciatis vitae, dignissimos quis, eos fugit aspernatur deserunt incidunt nobis! Fuga, nihil? Ipsa dolores
-        nulla nemo? Nam officia odio corrupti veritatis quod maiores sapiente molestiae voluptatem ipsum. Delectus culpa
-        cumque porro consequuntur nam velit explicabo architecto commodi iure suscipit, exercitationem, sint minima
-        magnam.</p>
 
-    <script>
-        // // 1. id selector
-        // var p = document.getElementById("p2")
-        // // console.log(p)
-        // p.style.backgroundColor = "navy"
-        // p.style.color = "white"
-        // p.style.padding = "10px"
-        // p.style.textAlign = "justify"
+  <p id="p1"  class="group-a">Paragraph 1  — group-a</p>
+  <p id="p2"  class="group-a">Paragraph 2  — group-a</p>
+  <p id="p3"  class="group-a">Paragraph 3  — group-a</p>
+  <p id="p4"  class="group-a">Paragraph 4  — group-a</p>
+  <p id="p5"  class="group-a">Paragraph 5  — group-a</p>
+  <p id="p6"  class="group-b">Paragraph 6  — group-b</p>
+  <p id="p7"  class="group-b">Paragraph 7  — group-b</p>
+  <p id="p8"  class="group-b">Paragraph 8  — group-b</p>
+  <p id="p9"  class="group-b">Paragraph 9  — group-b</p>
+  <p id="p10" class="group-b">Paragraph 10 — group-b</p>
 
-        // // 2. class selector
-        // var items = document.getElementsByClassName("sample2")
-        // // console.log(p)
-        // for (let p of items) {
-        //     p.style.backgroundColor = "navy"
-        //     p.style.color = "white"
-        //     p.style.padding = "10px"
-        //     p.style.textAlign = "justify"
-        // }
+  <script>
+    const BASE_STYLE = 'padding:10px; margin:6px 0; border-radius:4px; color:white; text-align:justify;';
 
-        // // 3. tag selector
-        // var items = document.getElementsByTagName("p")
-        // // console.log(p)
-        // for (let p of items) {
-        //     p.style.backgroundColor = "navy"
-        //     p.style.color = "white"
-        //     p.style.padding = "10px"
-        //     p.style.textAlign = "justify"
-        // }
+    // 1. getElementById
+    const byId = document.getElementById('p1');
+    byId.style.cssText = `${BASE_STYLE} background:navy;`;
 
-        // 4. query selector
-        // var p = document.querySelector("#p2")
-        // var p = document.querySelector(".sample2")
-        // var p = document.querySelector("p")
-        // console.log(p)
-        // p.style.backgroundColor = "navy"
-        // p.style.color = "white"
-        // p.style.padding = "10px"
-        // p.style.textAlign = "justify"
+    // 2. getElementsByClassName
+    const byClass = document.getElementsByClassName('group-b');
+    for (const el of byClass) {
+      el.style.cssText = `${BASE_STYLE} background:#4a0080;`;
+    }
 
-        // 5. query selector all
-        // var items = document.querySelectorAll("p")
-        // var items = document.querySelectorAll(".sample2")
-        var items = document.querySelectorAll(["#p1","#p4","#p7"])
-        // console.log(p)
-        for (let p of items) {
-            p.style.backgroundColor = "navy"
-            p.style.color = "white"
-            p.style.padding = "10px"
-            p.style.textAlign = "justify"
-        }
-    </script>
+    // 3. getElementsByTagName
+    // Logs all <p> elements; styling intentionally skipped to avoid overwriting above.
+    const byTag = document.getElementsByTagName('p');
+    console.log('getElementsByTagName("p") →', byTag.length, 'elements found');
+
+    // 4. querySelector (first match only)
+    const firstMatch = document.querySelector('#p4');
+    firstMatch.style.cssText = `${BASE_STYLE} background:darkgreen;`;
+
+    // 5. querySelectorAll
+    const selected = document.querySelectorAll('#p2, #p5, #p7');
+    for (const el of selected) {
+      el.style.cssText = `${BASE_STYLE} background:maroon;`;
+    }
+  </script>
+
 </body>
-
 </html>

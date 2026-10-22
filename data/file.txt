@@ -1,0 +1,60 @@
+Dotnet - Full Stack
+1. C# and fundamental
+2. Database - Mic Sql Server 2019
+	Project
+3. Ado.net (Connectivity
+	Project
+4. Html(basic)
+5. Asp.net 
+	Project
+6. Ad mvc 
+	proj
+7 Angular(html,css,bootsr.javasc,trysc   angular
+ M-th 10 Am
+ Software 
+	Visual Studio 2022 - 31gb
+	https://visualstudio.microsoft.com/vs/
+
+	Mic Sql server 14,19 22 - 5 gb
+https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16
+
+	Vs Code - 25 mb
+https://code.visualstudio.com/download
+
+ 
+Console App - (cmd) c# ( logic part), DLL,Web Service
+Desktop App - (exe) GUI , WPF(3.5) , Wcf(3.5)
+Web App   - (Browser) Asp.net,Asp.net Mvc,Javscript, jquery,react Ang
+Mobile App -  Anroid  Mac 
+
+Vs Framework ver - 4.7.2
+Core - 6.0 7.0
+c# - 10.0
+CLR - Common Lang Runtime Evn...
+	Jit compiler
+	MSIL
+	Cts
+	Cls
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,320 @@
+using System;
+namespace ConsoleApp219
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            // for(declare va;condti;inc){ print state}
+
+            for (int a = 1; a <= 10; a++)
+            {
+                Console.WriteLine(a);
+            }
+
+
+            Console.ReadLine();
+            // run f5
+        }
+    }
+}
+____________________
+using System;
+namespace ConsoleApp219
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            // for(declare va;condti;inc){ print state}
+            int sum = 0;
+            for (int a = 1; a <= 10; a++)
+            {
+                Console.WriteLine(a);
+                sum=sum+a;
+            }
+           Console.WriteLine("The final Sum is a: "+sum);
+            if (sum % 2 == 0)
+            {
+                Console.WriteLine("Even " + sum);
+            }
+            else
+            {
+                Console.WriteLine("Odd "+sum);
+            }
+
+        }
+    }
+}
+_____________________________
+using System;
+namespace ConsoleApp219
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            // for(declare va;condti;inc){ print state}
+            int sum = 0;
+            for (int a = 1; a <= 10; a++)
+            {
+                Console.WriteLine(a);
+                //sum=sum+a;
+                sum += a;// sum=sum+a
+            }
+           Console.WriteLine("The final Sum is a: "+sum);
+            //if (sum % 2 == 0)
+            //{
+            //    Console.WriteLine("Even " + sum);
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Odd "+sum);
+            //}
+
+        }
+    }
+}
+__________________
+using System;
+namespace ConsoleApp219
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            // for(declare va;condti;inc){ print state}
+            int sum = 0;
+            for (int a = 1; a <= 10; a++)
+            {
+                Console.WriteLine(a);
+
+                if (a % 2 == 0)
+                {
+                    Console.WriteLine("Even " + a);
+                }
+                else
+                {
+                    Console.WriteLine("Odd " + a);
+                }
+
+            }
+
+        }
+    }
+}
+_______________
+using System;
+namespace ConsoleApp219
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            // for(declare va;condti;inc){ print state}
+            int a = 1;
+            for (; a <= 10; a++)
+            {
+                Console.WriteLine(a);             
+            }
+
+        }
+    }
+}
+__________
+using System;
+namespace ConsoleApp219
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            //nested for loop
+            for (int a=1; a <= 10; a++)  // a=1 ; 2<=10(T);1+1
+            {
+                //nested
+                for (int b = 1; b <= a; b++)//b=1;2<=2(T);1+1
+                {
+                    Console.Write(a);
+                }
+                //1 2 2
+                Console.WriteLine();//break the line
+            }
+
+        }
+    }
+}
+_____________
+using System;
+namespace ConsoleApp219
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            //nested for loop
+            for (int a=1; a <= 10; a++)  // a=1 ; 2<=10(T);1+1
+            {
+                //nested
+                for (int b = 1; b <= a; b++)//b=1;2<=2(T);1+1
+                {
+                    Console.Write(b);
+                }
+                //1 2 2
+                Console.WriteLine();//break the line
+            }
+
+        }
+    }
+}
+_____________
+using System;
+namespace ConsoleApp219
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            //nested for loop
+            for (int a=1; a <= 10; a++)  // a=1 ; 2<=10(T);1+1
+            {
+                //nested
+                for (int b = 1; b <= a; b++)//b=1;2<=2(T);1+1
+                {
+                    Console.Write("*");
+                }
+                //1 2 2
+                Console.WriteLine();//break the line
+            }
+
+        }
+    }
+}
+____________
+using System;
+namespace ConsoleApp219
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            //nested for loop
+            for (int a=1; a <= 10; a++)   // a*b  //parent
+            {
+                for (int b = 1; b <= 10; b++) // child
+                {
+                    Console.Write(a*b+"\t");
+                }
+                Console.WriteLine();
+            }
+
+        }
+    }
+}
+// 1
+// 2 3
+// 4 5 6
+
+_____________
+using System;
+namespace ConsoleApp219
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            //nested for loop
+            int j = 1;
+            for (int a=1; a <= 10; a++)   // a*b  //parent
+            {
+                for (int b = 1; b <=a; b++) // child
+                {
+                    Console.Write(j++);                    
+                }
+                Console.WriteLine();
+            }
+        }
+    }
+}
+// 1
+// 2 3
+// 4 5 6
+_____________
+using System;
+namespace ConsoleApp219
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            //nested for loop
+            int j = 1;
+            for (int a=1; a <= 10; a++)   // a*b  //parent
+            {
+                for (int b = 10; b >=a; b--) // child
+                {
+                    Console.Write(b);                    
+                }
+                Console.WriteLine();
+            }
+        }
+    }
+}
+// 5
+// 54
+// 543
+
+_________________
+using System;
+namespace ConsoleApp219
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            //nested for loop
+            int j = 1;
+            for (int a=10; a >=1; a--)   // a*b  //parent
+            {
+                //Console.WriteLine(a);
+                for (int b = 10; b >= a; b--)
+                {
+                    Console.Write(b);
+                }
+                Console.WriteLine();
+
+            }
+        }
+    }
+}
+// 5
+// 54
+// 543
+// 1 - 5 
+// 1 
+// 1 2 @ @ @
+// 1 2 3 @ @ 
+// 1 2 3 4 @
+// 1 2 3 4 5
+
+
+// @ @ @ 1
+// @ @ 2 1
+// 1 2 3 @ @ 
+// 1 2 3 4 @
+// 1 2 3 4 5
+
+// A
+// A b
+// A b c
+
+// 1
+// 1 2
+// 1 2 3
+// 1 2 3 4 
+// 1 2 3 
+// 1 2
+// 1
+ 
+
+

@@ -1,0 +1,28 @@
+create database Project12pm
+use  Project12pm
+-- ecom Flip>Electronic
+-- Job- Na>Net
+--Host _ Name>
+
+create table Category
+(
+Cid int identity(1,1) primary key ,
+CName nvarchar(60) not null ,
+Active nvarchar(12) default 'Active',
+Ccode nvarchar(100) default newid(),
+TDate date default getdate()
+)
+create proc _GetCategory
+as
+begin
+select ROW_NUMBER()over(order by Cid)as 'Sno',Cname,Active,Ccode from Category
+end
+ 
+
+create proc _AddCategory
+@CName nvarchar(60),
+@Active nvarchar(12)
+as
+begin
+insert into Category(CName,Active)values(@CName,@Active)
+End
